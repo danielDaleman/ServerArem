@@ -29,15 +29,12 @@ public class HttpServer implements Runnable{
     @Override
     public void run() {
         try {
-            
             BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             String path = in.readLine();
-            String formato = "text/html";            
-            byte[] bytes = bytes = Files.readAllBytes(new File("./"+path).toPath());
-            String datos = "" + bytes.length;            
-            
+            String formato;
+            byte[] bytes;
+            String datos;
             if(path != null){
-                datos = null;
                 path = path.split(" ")[1];
                 if(path.contains(".html")){
                     bytes = Files.readAllBytes(new File("./"+path).toPath());
@@ -52,6 +49,10 @@ public class HttpServer implements Runnable{
                     datos = "" + bytes.length;
                     formato = "text/html";                   
                 }
+            }else{
+                bytes = Files.readAllBytes(new File("./"+path).toPath());
+                datos = "" + bytes.length;
+                formato = "text/html";                               
             }
             
             String encabezado = "HTTP/1.1 200 OK\r\n" 
@@ -64,7 +65,7 @@ public class HttpServer implements Runnable{
             for (int i = 0; i < bytesEn.length; i++) {res[i] = bytesEn[i];}
             for (int i = bytesEn.length; i < bytesEn.length + bytes.length; i++) {
                 res[i] = bytes[i - bytesEn.length];
-            }                        
+            }            
             socket.getOutputStream().write(res);
             socket.close();                                                                                                             
             
