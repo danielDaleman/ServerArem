@@ -33,11 +33,7 @@ public class HttpServer implements Runnable{
             String path = in.readLine();
             String formato;
             byte[] bytes;
-            String datos;
-            
-            bytes = Files.readAllBytes(new File("./"+path).toPath());
-            datos = "" + bytes.length;
-            formato = "text/html";
+            String datos;            
             
             if(path != null){
                 path = path.split(" ")[1];
@@ -54,11 +50,11 @@ public class HttpServer implements Runnable{
                     datos = "" + bytes.length;
                     formato = "text/html";                   
                 }
-            }/**else{
+            }else{
                 bytes = Files.readAllBytes(new File("./"+path).toPath());
                 datos = "" + bytes.length;
                 formato = "text/html";                               
-            }**/
+            }
             
             String encabezado = "HTTP/1.1 200 OK\r\n" 
                                 + "Content-Type: " + formato + "\r\n"
