@@ -49,10 +49,6 @@ public class HttpServer implements Runnable{
                     datos = "" + bytes.length;
                     formato = "text/html";                   
                 }
-            }else{
-                bytes = Files.readAllBytes(new File("./"+path).toPath());
-                datos = "" + bytes.length;
-                formato = "text/html";                               
             }
             
             String encabezado = "HTTP/1.1 200 OK\r\n" 
@@ -66,7 +62,6 @@ public class HttpServer implements Runnable{
             for (int i = bytesEn.length; i < bytesEn.length + bytes.length; i++) {
                 res[i] = bytes[i - bytesEn.length];
             }            
-            System.out.println(res.length);
             socket.getOutputStream().write(res);
             socket.close();                                                                                                             
             

@@ -1,0 +1,7 @@
+LINK HEROKU
+
+https://serverhttparem.herokuapp.com/
+
+para Probar con imagen https://serverhttparem.herokuapp.com/image.jpg
+
+para Probar con pagina https://serverhttparem.herokuapp.com/index.html
