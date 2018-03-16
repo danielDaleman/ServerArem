@@ -66,7 +66,7 @@ public class HttpServer implements Runnable{
             for (int i = bytesEn.length; i < bytesEn.length + bytes.length; i++) {
                 res[i] = bytes[i - bytesEn.length];
             }            
-            System.out.println(rta.length);
+            System.out.println(res.length);
             socket.getOutputStream().write(res);
             socket.close();                                                                                                             
             
