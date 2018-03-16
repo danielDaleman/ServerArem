@@ -31,9 +31,9 @@ public class HttpServer implements Runnable{
         try {
             BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             String path = in.readLine();
-            String formato;
-            String datos;
-            byte[] bytes = null;
+            String formato = "text/html";            
+            byte[] bytes = bytes = Files.readAllBytes(new File("./"+path).toPath());
+            String datos = "" + bytes.length;            
             if(path != null){
                 path = path.split(" ")[1];
                 if(path.contains(".html")){
