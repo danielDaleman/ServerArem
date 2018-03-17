@@ -44,7 +44,7 @@ public class HttpServer implements Runnable{
                 }else if(path.contains(".jpg")){
                     bytes = Files.readAllBytes(new File("./"+path).toPath());
                     datos = "" + bytes.length;
-                    formato = "image/html";                                   
+                    formato = "image/jpg";                                   
                 }else{
                     bytes = Files.readAllBytes(new File("./index.html").toPath());
                     datos = "" + bytes.length;
